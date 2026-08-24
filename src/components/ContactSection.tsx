@@ -4,8 +4,10 @@ export default function ContactSection() {
     return (
         <footer id="contact" className="bg-[#0a0e17] text-white border-t border-white/5 py-12">
             <div className="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-                <div className="text-slate-500 text-sm">
-                    © 2024 Howard Wilyman. Crafted with <span className="text-primary">Unity</span> & Passion.
+                <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-slate-400 text-sm text-center sm:text-left">
+                    <span>© {new Date().getFullYear()} Howard Wilyman</span>
+                    <span className="hidden sm:inline text-slate-600">•</span>
+                    <span className="text-slate-400">Last updated: August 2026</span>
                 </div>
 
                 <div className="flex items-center gap-6">

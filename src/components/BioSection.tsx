@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { GlowingEffect } from './ui/glowing-effect';
 import { Link } from 'react-router-dom';
 import profileImage from '../assets/profile.png';
 
@@ -36,91 +35,64 @@ export default function BioSection() {
                             </p>
                         </motion.div>
 
-                        {/* Skills Grid */}
+                        {/* Core Skills Tags */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.4, duration: 0.6 }}
-                            className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-4"
+                            className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-2"
                         >
-                            <div className="p-4 rounded-lg bg-[#1a2333] border border-white/5 flex flex-col items-center text-center gap-2 group hover:border-primary/50 transition-colors">
-                                <span className="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">view_in_ar</span>
-                                <span className="text-white font-bold text-sm">Unity 3D</span>
-                            </div>
-                            <div className="p-4 rounded-lg bg-[#1a2333] border border-white/5 flex flex-col items-center text-center gap-2 group hover:border-primary/50 transition-colors">
-                                <span className="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">code</span>
-                                <span className="text-white font-bold text-sm">C# Expert</span>
-                            </div>
-                            <div className="p-4 rounded-lg bg-[#1a2333] border border-white/5 flex flex-col items-center text-center gap-2 group hover:border-primary/50 transition-colors">
-                                <span className="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">gradient</span>
-                                <span className="text-white font-bold text-sm">Shaders</span>
-                            </div>
-                            <div className="p-4 rounded-lg bg-[#1a2333] border border-white/5 flex flex-col items-center text-center gap-2 group hover:border-primary/50 transition-colors">
-                                <span className="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">sports_esports</span>
-                                <span className="text-white font-bold text-sm">Gameplay</span>
-                            </div>
+                            {[
+                                { title: 'Unity 3D', desc: 'Game Engine' },
+                                { title: 'C#', desc: 'Core Architecture' },
+                                { title: 'HLSL / Shaders', desc: 'Technical Art' },
+                                { title: 'Gameplay', desc: 'Systems & Logic' }
+                            ].map((skill, i) => (
+                                <div key={i} className="p-3.5 rounded-xl bg-[#1a2333]/70 border border-white/5 flex flex-col hover:border-primary/40 transition-colors">
+                                    <span className="text-white font-semibold text-sm">{skill.title}</span>
+                                    <span className="text-slate-400 text-xs mt-0.5">{skill.desc}</span>
+                                </div>
+                            ))}
                         </motion.div>
 
                         <motion.div
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
-                            transition={{ delay: 0.6 }}
-                        > {/* Added closing '>' for motion.div */}
-                            <div className="pt-4">
-                                <Link to="/story" className="inline-flex items-center gap-2 text-primary font-bold hover:text-white transition-colors group">
-                                    Read full story
-                                    <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            transition={{ delay: 0.5 }}
+                        >
+                            <div className="pt-2">
+                                <Link to="/story" className="inline-flex items-center gap-2 text-primary font-semibold hover:text-white transition-colors group text-sm">
+                                    Read full journey & story
+                                    <span className="group-hover:translate-x-1 transition-transform">→</span>
                                 </Link>
                             </div>
-                        </motion.div> {/* Added closing tag for motion.div */}
+                        </motion.div>
                     </div>
 
-                    {/* Abstract Visual Column */}
+                    {/* Portrait Column */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
+                        initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
-                        className="relative order-1 lg:order-2 h-[400px] lg:h-[600px] w-full flex items-center justify-center"
+                        transition={{ duration: 0.7 }}
+                        className="relative order-1 lg:order-2 h-[420px] lg:h-[560px] w-full flex items-center justify-center"
                     >
-                        {/* Background Glow for Image */}
-                        <div className="absolute inset-0 bg-primary/10 blur-[80px] rounded-full transform scale-75"></div>
-
-                        {/* 3D Wireframe Abstract Representation */}
-                        <div className="relative z-10 w-full h-full rounded-2xl">
-                            <GlowingEffect
-                                spread={40}
-                                glow={true}
-                                disabled={false}
-                                proximity={64}
-                                inactiveZone={0.01}
-                                borderWidth={5}
-                            />
-                            <div className="relative z-10 w-full h-full rounded-2xl overflow-hidden shadow-2xl bg-[#0f141e]" style={{ backgroundImage: `url(${profileImage})`, backgroundSize: 'cover', backgroundPosition: 'center top' }}>
+                        <div className="relative z-10 w-full h-full rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-[#0f141e]">
+                            <div
+                                className="w-full h-full bg-cover bg-top"
+                                style={{ backgroundImage: `url(${profileImage})` }}
+                            >
                                 {/* Gradient overlays for seamless blending */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-[#131a26] via-transparent to-transparent opacity-90"></div>
-                                <div className="absolute inset-0 bg-gradient-to-b from-[#131a26]/50 via-transparent to-transparent opacity-60"></div>
-                                <div className="absolute inset-0 bg-gradient-to-r from-[#131a26]/50 via-transparent to-[#131a26]/50 opacity-60"></div>
-
-                                {/* Overlay UI elements mimicking a game engine editor - Dots only */}
-                                <div className="absolute top-4 left-4 right-4 flex justify-between opacity-70">
-                                    <div className="flex gap-2">
-                                        <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                                        <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                                        <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                                    </div>
-                                </div>
-
-
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#131a26] via-transparent to-transparent opacity-80"></div>
                             </div>
                         </div>
                     </motion.div>
                 </div>
             </div>
             {/* Smooth Transition Gradient to Next Section */}
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-black pointer-events-none"></div>
+            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-black pointer-events-none"></div>
         </section>
     );
 }

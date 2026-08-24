@@ -29,11 +29,10 @@ export default function Navbar() {
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'glass-nav h-16' : 'bg-transparent h-20'}`}
         >
             <div className="max-w-[1200px] mx-auto px-6 h-full flex items-center justify-between">
-                <div className="flex items-center gap-3 cursor-pointer" onClick={() => scrollToSection('hero')}>
-                    <div className="size-8 bg-primary/20 rounded-lg flex items-center justify-center border border-primary/40 text-primary">
-                        <span className="material-symbols-outlined text-xl">terminal</span>
-                    </div>
-                    <span className="text-white font-bold text-xl tracking-tight">HW</span>
+                <div className="flex items-center cursor-pointer group" onClick={() => scrollToSection('hero')}>
+                    <span className="text-white font-bold text-lg tracking-tight group-hover:text-primary transition-colors">
+                        Howard Wilyman
+                    </span>
                 </div>
 
                 <div className="hidden md:flex items-center gap-8">

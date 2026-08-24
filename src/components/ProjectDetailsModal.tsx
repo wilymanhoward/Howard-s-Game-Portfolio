@@ -56,8 +56,7 @@ export default function ProjectDetailsModal({ project, isOpen, onClose }: Projec
                                 <h2 className="text-4xl text-white font-bold mb-1">{project.title}</h2>
                                 <div className="flex items-center gap-4 mb-6">
                                     <h3 className="text-xl text-slate-400 font-light">{project.role}</h3>
-                                    <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10">
-                                        <span className="material-symbols-outlined text-sm text-primary">groups</span>
+                                    <div className="px-3 py-1 rounded-full bg-white/5 border border-white/10">
                                         <span className="text-xs text-slate-300 font-medium">
                                             {project.team ? `${project.team.length} People` : 'Solo Project'}
                                         </span>
@@ -75,29 +74,20 @@ export default function ProjectDetailsModal({ project, isOpen, onClose }: Projec
                                         <>
                                             <p>{project.description}</p>
                                             <p>
-                                                This project pushed the boundaries of real-time rendering and interactive storytelling.
-                                                By leveraging custom shaders and advanced AI behavior trees, we created an experience
-                                                that feels both organic and technically precise.
+                                                This project focuses on real-time rendering, interactive systems, and intuitive gameplay feel.
                                             </p>
                                         </>
-                                    )}
-
-                                    {!project.modalDescription && (
-                                        <p className="text-sm border-l-2 border-primary pl-4 italic text-slate-400">
-                                            "A breakthrough in visual fidelity and gameplay integration."
-                                        </p>
                                     )}
                                 </div>
 
                                 {/* Tech Stack */}
                                 <div className="mt-auto">
-                                    <h4 className="text-white text-sm font-bold uppercase tracking-wider mb-4 border-b border-white/10 pb-2">Technologies</h4>
+                                    <h4 className="text-white text-xs font-semibold uppercase tracking-wider mb-3 text-slate-400">Technologies</h4>
                                     <div className="flex flex-wrap gap-2">
                                         {project.tags.map((tag, i) => (
-                                            <div key={i} className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-white">
-                                                <span className="material-symbols-outlined text-sm">{tag.icon}</span>
-                                                <span>{tag.label}</span>
-                                            </div>
+                                            <span key={i} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-slate-200">
+                                                {tag.label}
+                                            </span>
                                         ))}
                                     </div>
                                 </div>
@@ -110,13 +100,10 @@ export default function ProjectDetailsModal({ project, isOpen, onClose }: Projec
                                                 navigate(`/project/${project.id}`);
                                             }
                                         }}
-                                        className="flex-1 bg-primary hover:bg-blue-600 text-white font-bold py-3 rounded-lg transition-colors flex items-center justify-center gap-2"
+                                        className="w-full bg-primary hover:bg-blue-600 text-white font-semibold py-3 rounded-lg transition-colors flex items-center justify-center gap-2 text-sm"
                                     >
-                                        <span className="material-symbols-outlined">rocket_launch</span>
-                                        View Detail
-                                    </button>
-                                    <button className="px-4 border border-white/20 hover:border-white rounded-lg text-white transition-colors">
-                                        <span className="material-symbols-outlined">code</span>
+                                        View Case Study
+                                        <span>→</span>
                                     </button>
                                 </div>
                             </div>

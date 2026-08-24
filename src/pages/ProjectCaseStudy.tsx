@@ -87,16 +87,14 @@ export default function ProjectCaseStudy() {
 
                         {/* Technologies - Moved under Video */}
                         <div className="bg-[#131a26] p-6 rounded-2xl border border-white/5">
-                            <h4 className="text-white font-bold mb-4 flex items-center gap-2">
-                                <span className="material-symbols-outlined text-primary text-xl">token</span>
+                            <h4 className="text-white font-bold mb-3 text-sm uppercase tracking-wider text-slate-300">
                                 Technologies
                             </h4>
                             <div className="flex flex-wrap gap-2">
                                 {project.tags.map((tag, i) => (
-                                    <div key={i} className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-slate-300">
-                                        <span className="material-symbols-outlined text-sm text-primary">{tag.icon}</span>
-                                        <span>{tag.label}</span>
-                                    </div>
+                                    <span key={i} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-slate-300">
+                                        {tag.label}
+                                    </span>
                                 ))}
                             </div>
                         </div>
@@ -112,20 +110,19 @@ export default function ProjectCaseStudy() {
                         <div className="bg-[#131a26] p-8 rounded-2xl border border-white/5 h-full">
                             <h3 className="text-xl font-bold mb-6 border-b border-white/10 pb-4">Project Overview</h3>
                             <div className="prose prose-invert">
-                                <p className="text-lg text-slate-300 leading-relaxed mb-6">
+                                <p className="text-base text-slate-300 leading-relaxed mb-6">
                                     {project.fullDescription || project.description}
                                 </p>
 
                                 {project.team && (
                                     <div className="mt-8 pt-8 border-t border-white/10">
-                                        <h4 className="text-white font-bold mb-4 flex items-center gap-2">
-                                            <span className="material-symbols-outlined text-primary text-xl">groups</span>
+                                        <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider text-slate-300">
                                             Team Members
                                         </h4>
-                                        <div className="flex flex-col gap-3">
+                                        <div className="flex flex-col gap-2.5">
                                             {project.team.map((member, i) => (
-                                                <div key={i} className="flex items-center gap-2 text-slate-400">
-                                                    <span className="w-1.5 h-1.5 rounded-full bg-primary/50"></span>
+                                                <div key={i} className="flex items-center gap-2 text-slate-400 text-sm">
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-primary/70"></span>
                                                     <span>{member}</span>
                                                 </div>
                                             ))}
@@ -147,13 +144,13 @@ export default function ProjectCaseStudy() {
                     {project.contentSections ? (
                         project.contentSections.map((section, idx) => (
                             <div key={idx} className="bg-[#131a26] p-8 rounded-2xl border border-white/5 hover:border-white/10 transition-colors">
-                                <h3 className="text-xl font-bold mb-6 border-b border-white/10 pb-4 text-primary">{section.title}</h3>
+                                <h3 className="text-lg font-bold mb-6 border-b border-white/10 pb-4 text-primary">{section.title}</h3>
                                 <ul className="space-y-4 text-slate-300">
                                     {section.items.map((item, i) => (
                                         <li key={i} className="flex items-start gap-3">
-                                            <span className="material-symbols-outlined text-primary mt-1 flex-shrink-0 text-sm">arrow_forward_ios</span>
+                                            <span className="text-primary mt-0.5 text-xs font-bold">―</span>
                                             <div>
-                                                {item.title && <strong className="text-white block mb-1">{item.title}</strong>}
+                                                {item.title && <strong className="text-white block mb-1 text-sm">{item.title}</strong>}
                                                 <span className="text-slate-400 text-sm leading-relaxed">{item.description}</span>
                                             </div>
                                         </li>
@@ -164,18 +161,18 @@ export default function ProjectCaseStudy() {
                     ) : (
                         // Fallback Content
                         <div className="lg:col-span-3 bg-[#131a26] p-8 rounded-2xl border border-white/5">
-                            <h3 className="text-xl font-bold mb-6 border-b border-white/10 pb-4">Key Features</h3>
-                            <ul className="space-y-4 text-slate-300">
-                                <li className="flex items-start gap-3">
-                                    <span className="material-symbols-outlined text-primary mt-1">check_circle</span>
+                            <h3 className="text-lg font-bold mb-6 border-b border-white/10 pb-4">Key Features</h3>
+                            <ul className="space-y-3 text-slate-300 text-sm">
+                                <li className="flex items-center gap-2">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
                                     <span>Advanced Physics Interactions</span>
                                 </li>
-                                <li className="flex items-start gap-3">
-                                    <span className="material-symbols-outlined text-primary mt-1">check_circle</span>
+                                <li className="flex items-center gap-2">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
                                     <span>High Fidelity Rendering Pipeline</span>
                                 </li>
-                                <li className="flex items-start gap-3">
-                                    <span className="material-symbols-outlined text-primary mt-1">check_circle</span>
+                                <li className="flex items-center gap-2">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
                                     <span>Optimized Performance</span>
                                 </li>
                             </ul>

@@ -35,12 +35,17 @@ export default function ProjectsSection() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="flex flex-col gap-4"
+                    className="flex flex-col md:flex-row md:items-end justify-between gap-4"
                 >
-                    <h2 className="text-white text-4xl md:text-5xl font-bold tracking-tight">Selected Works</h2>
-                    <p className="text-[#90a4cb] text-lg max-w-2xl font-body font-light">
-                        A curated collection of professional projects, technical demos, and game jams showcasing expertise in gameplay programming and engine architecture.
-                    </p>
+                    <div className="flex flex-col gap-3">
+                        <h2 className="text-white text-4xl md:text-5xl font-bold tracking-tight">Selected Works</h2>
+                        <p className="text-[#90a4cb] text-lg max-w-2xl font-body font-light">
+                            A curated collection of professional projects, technical demos, and game jams showcasing expertise in gameplay programming and engine architecture.
+                        </p>
+                    </div>
+                    <div className="text-xs text-slate-400 font-medium whitespace-nowrap pb-1">
+                        Updated: August 2026
+                    </div>
                 </motion.div>
 
                 {/* Filters */}
