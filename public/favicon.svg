@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <rect width="32" height="32" rx="8" fill="#0a0f1d"/>
+  <rect x="0.5" y="0.5" width="31" height="31" rx="7.5" stroke="#1e293b" stroke-width="1"/>
+  <defs>
+    <linearGradient id="cubeGrad" x1="8" y1="7" x2="24" y2="26" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+  <!-- Isometric 3D Game Geometry -->
+  <path d="M16 7L24 11.8V21.2L16 26L8 21.2V11.8L16 7Z" stroke="url(#cubeGrad)" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M16 16.5V26M16 16.5L24 11.8M16 16.5L8 11.8" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="16" cy="16.5" r="1.75" fill="#ffffff"/>
+</svg>
