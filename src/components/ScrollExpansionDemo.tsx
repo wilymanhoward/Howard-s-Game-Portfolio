@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import ScrollExpandMedia from './ui/scroll-expansion-hero';
 import unityEditorBg from '../assets/unity-editor.png';
 import seaVagabondImg from '../assets/sea-vagabond.jpg';
-import video0119 from '../assets/0119.mp4';
+import trailerVideo from '../assets/Trailer (2).mp4';
 
 interface MediaAbout {
     overview: string;
@@ -25,7 +25,7 @@ interface MediaContentCollection {
 
 const sampleMediaContent: MediaContentCollection = {
     video: {
-        src: video0119,
+        src: trailerVideo,
         poster: seaVagabondImg,
         background: unityEditorBg,
         title: 'From logic to Life',

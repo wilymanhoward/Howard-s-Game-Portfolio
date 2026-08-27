@@ -1,4 +1,4 @@
-import { useRef, type ReactNode } from 'react';
+import { useRef, useState, type ReactNode } from 'react';
 import { motion, useScroll, useTransform, useSpring, useMotionValueEvent } from 'framer-motion';
 
 interface ScrollExpandMediaProps {
@@ -24,6 +24,7 @@ const ScrollExpandMedia = ({
 }: ScrollExpandMediaProps) => {
     const sectionRef = useRef<HTMLDivElement>(null);
     const videoRef = useRef<HTMLVideoElement>(null);
+    const [isMuted, setIsMuted] = useState(false);
 
     // Create a scroll track that is 3x the viewport height for plenty of scroll room
     const { scrollYProgress } = useScroll({
@@ -41,7 +42,19 @@ const ScrollExpandMedia = ({
     useMotionValueEvent(smoothProgress, "change", (latest) => {
         if (videoRef.current) {
             if (latest > 0.6) {
-                videoRef.current.play();
+                // Ensure audio plays according to user mute state
+                videoRef.current.muted = isMuted;
+                const playPromise = videoRef.current.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(() => {
+                        // Fallback if browser requires muted autoplay first
+                        if (videoRef.current) {
+                            videoRef.current.muted = true;
+                            setIsMuted(true);
+                            videoRef.current.play().catch(() => {});
+                        }
+                    });
+                }
             } else {
                 videoRef.current.pause();
             }
@@ -114,14 +127,39 @@ const ScrollExpandMedia = ({
                 >
                     <div className="relative w-full h-full">
                         {mediaType === 'video' ? (
-                            <video
-                                ref={videoRef}
-                                src={mediaSrc}
-                                className="w-full h-full object-cover"
-                                loop
-                                muted
-                                playsInline
-                            />
+                            <>
+                                <video
+                                    ref={videoRef}
+                                    src={mediaSrc}
+                                    className="w-full h-full object-cover"
+                                    loop
+                                    muted={isMuted}
+                                    playsInline
+                                />
+                                {/* Sound Toggle Button */}
+                                <button
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        if (videoRef.current) {
+                                            const nextMuted = !isMuted;
+                                            videoRef.current.muted = nextMuted;
+                                            setIsMuted(nextMuted);
+                                            if (!nextMuted) {
+                                                videoRef.current.play().catch(() => {});
+                                            }
+                                        }
+                                    }}
+                                    className="absolute bottom-6 right-6 z-30 px-3.5 py-2 rounded-full bg-black/70 hover:bg-black/90 text-white border border-white/20 backdrop-blur-md transition-all shadow-xl flex items-center gap-2 text-xs font-medium cursor-pointer group"
+                                    title={isMuted ? "Unmute Video" : "Mute Video"}
+                                >
+                                    <span className="text-base leading-none">
+                                        {isMuted ? "🔇" : "🔊"}
+                                    </span>
+                                    <span>
+                                        {isMuted ? "Unmute" : "Sound On"}
+                                    </span>
+                                </button>
+                            </>
                         ) : (
                             <img
                                 src={mediaSrc}
